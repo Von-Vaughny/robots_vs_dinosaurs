@@ -21,7 +21,9 @@ class Dinosaur:
         elif n in range (86, 95):
             pass
         elif n in range(53, 85):         
-            robot.health -= math.ceil(0.5 * self.attack_power)   
+            robot.health -= math.ceil(0.5 * self.attack_power)
+        elif n == 50:
+            self.health -= self.attack_power
         else:
             robot.health -= self.attack_power
         return n
