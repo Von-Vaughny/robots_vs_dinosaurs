@@ -4,10 +4,10 @@ import math
 
 
 class Robot:
-    def __init__(self, name):
+    def __init__(self, name, weapon, attack_power):
         self.name = name
         self.health = random.randint(50, 100)
-        self.active_weapon = Weapon(random.choice(['Canon Launcher', 'Laser Blaster', 'Star Crusher']), random.randint(10, 25))
+        self.active_weapon = Weapon(weapon, attack_power)
 
     def attack(self, dinosaur):
         n = random.randint(1, 100)
@@ -16,7 +16,7 @@ class Robot:
         elif n in range(2, 10):
             dinosaur.health -= (2 * self.active_weapon.attack_power)
         elif n == 100:
-            dinosaur.health += random.randit(10, 25)
+            dinosaur.health += random.randint(10, 25)
         elif n in range(96, 99):
             dinosaur.health += random.randint(1, 10)      
         elif n in range (86, 95):
