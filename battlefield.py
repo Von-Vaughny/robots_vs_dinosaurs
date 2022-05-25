@@ -106,6 +106,7 @@ class Battlefield:
                     self.fleet.remove_robot()
                 self.turn = True            
             self.player_turn += 1
+            
     # Consider reducing lines of code
     def robots_turn(self):
         print("\nSelect your attacking robot:")
@@ -131,7 +132,10 @@ class Battlefield:
             print(f"You've selected to attack {self.herd.herd_list[int(self.j)].name}")
         self.turn = False
         return int(self.i), int(self.j)
-    # Consider reducing lines of code, intializing variables in init()               
+    
+    # Consider reducing lines of code, intializing variables in init(), Reconfigure the conditions. Maybe include another if/else 
+    # clause after "if int(self.herd.herd_list[n-1].attack_power) >= int(self.herd.herd_list[n].attack_power):" to check if it
+    # the value is bigger than self.dinosaur_attack_max, self.robot_attack_max to select max.
     def dinosaurs_turn(self):
         self.dinosaur_attack_max, self.robot_attack_max = 0, 0
         i, j = 0, 0
@@ -153,6 +157,7 @@ class Battlefield:
                 j = n
         return i, j
     
+    # Consider moving hit to its own function and/or combining display_(player)_attack by the self.turn booleaan to determine statements.
     def display_robot_attack(self, n, i, j):
         hit = "HIT!"
         statement = f"{self.fleet.fleet_list[int(i)].active_weapon.attack_power} damage!"
