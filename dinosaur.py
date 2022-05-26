@@ -4,26 +4,25 @@ import math
 class Dinosaur:
     def __init__(self, name, attack_power):
         self.name = name
-        self.health = random.randint(50, 100)
         self.attack_power = attack_power
+        self.health = random.randint(50, 100)
 
-    # Add block - 50% damage, and dodge capability.
     def attack(self, robot):
-        n = random.randint(1, 100)
-        if n == 1:
+        d20 = random.randint(1, 20)
+        if d20 in range(19, 20):       
             robot.health -= (3 * self.attack_power)
-        elif n in range(1, 10):
+        elif d20 in range(15, 18):
             robot.health -= (2 * self.attack_power)
-        elif n == 100:
-            robot.health += random.randint(10, 25)
-        elif n in range(96, 99):
-            robot.health += random.randint(1, 10)  
-        elif n in range (86, 95):
+        elif d20 in range(7, 10):        
+            robot.health -= math.ceil(0.5 * self.attack_power)        
+        elif d20 in range(5, 7):
             pass
-        elif n in range(53, 85):         
-            robot.health -= math.ceil(0.5 * self.attack_power)
-        elif n == 50:
+        elif d20 in range(3, 5):
+            robot.health += random.randint(1, 10)
+        elif d20 == 2:
+            robot.health += random.randint(10, 25)  
+        elif d20 == 1:
             self.health -= self.attack_power
         else:
             robot.health -= self.attack_power
-        return n
+        return d20

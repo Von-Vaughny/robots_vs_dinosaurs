@@ -10,21 +10,21 @@ class Robot:
         self.active_weapon = Weapon(weapon, attack_power)
 
     def attack(self, dinosaur):
-        n = random.randint(1, 100)
-        if n == 1:
+        d20 = random.randint(1, 20)
+        if d20 in range(19, 20):
             dinosaur.health -= (3 * self.active_weapon.attack_power)
-        elif n in range(2, 10):
+        elif d20 in range(15, 18):
             dinosaur.health -= (2 * self.active_weapon.attack_power)
-        elif n == 100:
-            dinosaur.health += random.randint(10, 25)
-        elif n in range(96, 99):
-            dinosaur.health += random.randint(1, 10)      
-        elif n in range (86, 95):
-            pass        
-        elif n in range(53, 85):
+        elif d20 in range(7, 10):
             dinosaur.health -= math.ceil(0.5 * self.active_weapon.attack_power)
-        elif n == 50:
-            self.health -= self.active_weapon.attack_power
+        elif d20 in range(5, 7):
+            pass
+        elif d20 in range(3, 5):
+            dinosaur.health += random.randint(1, 10) 
+        elif d20 == 2:
+            dinosaur.health += random.randint(10, 25)        
+        elif d20 == 1:
+            self.health -= self.active_weapon.attack_power           
         else: 
             dinosaur.health -= self.active_weapon.attack_power
-        return n
+        return d20
