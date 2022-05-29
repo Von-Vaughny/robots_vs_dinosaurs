@@ -18,7 +18,8 @@ import re
 # re.sub(rf"[^1-2]", "", input("\nPlayer selects game mode "), will need to create a list games_modes which I use as an index such that 
 # re.sub(rf"[^1-len(game_modes)]", ...). To add to game_modes will do something along the lines game_modes.append("Death Match") if unlock == 2
 # else game_modes.append(...) ..., plus if game_modes[-1] == game_modes[-2]: del game_modes[-1]. Check game_modes.py. May even use it in 
-# conjunction with select_game_mode(self, unlock) and pass unlock.
+# conjunction with select_game_mode(self, unlock) and pass unlock. For "Death Match", we still use d20, take hit, and if hit in (...) then 
+# robot/dinosaur.health = 0.
 class Battlefield:
     def __init__(self):
         self.herd = Herd()
