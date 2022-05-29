@@ -9,6 +9,15 @@ import sys
 import re
 
 
+# CONSIDER adding different damage values to dinosaur's 'slashes', 'bites', 'rams'. Could update herd.select_dinosaur to find the highest value for 
+# each attack for each dinosaur, and then randomly choose amongst them and use highest attack or a randomly selected attack from that dinosaur. May
+# add game modes with environmental damage, random assistance from the hosts, combined attack damage from fellow robot/dinosaur, and even a one hit
+# Death Match in which being first is a strong advantage. Could unlock these gameplay modes by the count of wins for the robots on main.py like
+# winner = Battlefield().run_game(int(win[0])), and in battlefield.py def run_game(self, unlock), self.select_game_mode(unlock), def 
+# select_game_mode(self, unlock) and having multiple if statements to show each different unlocked game_mode. Because I use 
+# re.sub(rf"[^1-2]", "", input("\nPlayer selects game mode "), it may be easier to have two lists, one list games with the initial two, second list
+# game_modes = [], [games_modes.append(mode) for mode in games if mode not in games_modes] to avoid duplication in the case the next result is a 
+# lost for the robots and the if statement reapplied.
 class Battlefield:
     def __init__(self):
         self.herd = Herd()
@@ -96,9 +105,9 @@ class Battlefield:
               f"{self.robo.active_weapon.name} for {self.display_att_result(self.d20, self.robo, self.dino)[1]}\nDEADMAN: "
               f"Dinosaur {self.dino.name} has {self.dino.health if self.dino.health > 0 else 0} health remaining!")
         else:
-            print(f"{self.display_att_result(self.d20, self.robo, self.dino)[0]} Dinosaur {self.dino.name} attacks {self.robo.name} for "
-                f"{self.display_att_result(self.d20, self.robo, self.dino)[1]}\nRUFF MCGREE: Robot {self.robo.name} has "
-                f"{self.robo.health if self.robo.health > 0 else 0} health remaining!")    
+            print(f"{self.display_att_result(self.d20, self.robo, self.dino)[0]} Dinosaur {self.dino.name} "
+                f"{random.choice(['slashes', 'bites', 'rams'])} {self.robo.name} for {self.display_att_result(self.d20, self.robo, self.dino)[1]}"
+                f"\nRUFF MCGREE: Robot {self.robo.name} has {self.robo.health if self.robo.health > 0 else 0} health remaining!")    
 
     def display_att_result(self, d20, robot, dinosaur):
         self.host_name = 'RUFF MCGREE' if self.turn else 'DEADMAN'
