@@ -40,7 +40,7 @@ class Battlefield:
     def display_welcome(self):
         print("Robots vs Dinosaurs\n\nRUFF MCGREE: Welcome to the battle of the ages, folks! I am your co-host RUFF MCGREE and this bumhead is "
             "your co-host DEADMAN, and we have gathered here for yet another night of mayhem in the arena.\n\nDEADMAN: That's right Ruff. And we have "
-            "no shortage of robots and dinosaurs ready to fight for the title of Top Predator. The big question is, \"which side will winit?\" "
+            "no shortage of robots and dinosaurs ready to fight for the title of Top Predator. The big question is, \"which side will win it?\" "
             "\n\nRUFF MCGREE: The big question indeed. But as we both know, only one team can win it, so let's waste no time and see who we have "
             "competing tonight!")
 
