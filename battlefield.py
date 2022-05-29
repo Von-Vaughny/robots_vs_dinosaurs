@@ -15,9 +15,10 @@ import re
 # Death Match in which being first is a strong advantage. Could unlock these gameplay modes by the count of wins for the robots on main.py like
 # winner = Battlefield().run_game(int(win[0])), and in battlefield.py def run_game(self, unlock), self.select_game_mode(unlock), def 
 # select_game_mode(self, unlock) and having multiple if statements to show each different unlocked game_mode. Because I use 
-# re.sub(rf"[^1-2]", "", input("\nPlayer selects game mode "), it may be easier to have two lists, one list games with the initial two, second list
-# game_modes = [], [games_modes.append(mode) for mode in games if mode not in games_modes] to avoid duplication in the case the next result is a 
-# lost for the robots and the if statement reapplied.
+# re.sub(rf"[^1-2]", "", input("\nPlayer selects game mode "), will need to create a list games_modes which I use as an index such that 
+# re.sub(rf"[^1-len(game_modes)]", ...). To add to game_modes will do something along the lines game_modes.append("Death Match") if unlock == 2
+# else game_modes.append(...) ..., plus if game_modes[-1] == game_modes[-2]: del game_modes[-1]. Check game_modes.py. May even use it in 
+# conjunction with select_game_mode(self, unlock) and pass unlock.
 class Battlefield:
     def __init__(self):
         self.herd = Herd()
